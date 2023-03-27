@@ -2,7 +2,7 @@ const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight * 0.9;
 const BLOCK_SIZE = 25;
 const JUMP_HEIGHT = 3;
-const PLAYER_REACH = BLOCK_SIZE * 500;
+const PLAYER_REACH = BLOCK_SIZE * 2.99;
 
 const MAX_MASS = BLOCK_SIZE;
 const MIN_MASS = 1;
