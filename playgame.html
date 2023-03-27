@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="tooltips.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Miner</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div id="grass" class="block-type tooltip">
+            <span id="grass-counter">0</span>
+            <span id="grass-tooltip" class="tooltiptext">Grass</span>
+        </div>
+        <div id="dirt" class="block-type tooltip">
+            <span id="dirt-counter">0</span>
+            <span id="dirt-tooltip" class="tooltiptext">Dirt</span>
+        </div>
+        <div id="stone" class="block-type tooltip">
+            <span id="stone-counter">0</span>
+            <span id="stone-tooltip" class="tooltiptext">Stone</span>
+        </div>
+        <div id="iron" class="block-type tooltip">
+            <span id="iron-counter">0</span>
+            <span id="iron-tooltip" class="tooltiptext">Iron</span>
+        </div>
+        <div id="diamond" class="block-type tooltip">
+            <span id="diamond-counter">0</span>
+            <span id="diamond-tooltip" class="tooltiptext">Diamond</span>
+        </div>
+        <div id="water" class="block-type tooltip">
+            <span id="water-counter">0</span>
+            <span id="water-tooltip" class="tooltiptext">Water</span>
+        </div>
+        <div id="wood" class="block-type tooltip">
+            <span id="wood-counter">0</span>
+            <span id="wood-tooltip" class="tooltiptext">Wood</span>
+        </div>
+        <div id="leaf" class="block-type tooltip">
+            <span id="leaf-counter">0</span>
+            <span id="leaf-tooltip" class="tooltiptext">Leaf</span>
+        </div>
+        <div id="sapling" class="block-type tooltip">
+            <span id="sapling-counter">0</span>
+            <span id="sapling-tooltip" class="tooltiptext">Sapling</span>
+        </div>
+        <div id="restart" class="block-type">Go Home</div>
+        </div>
+        <script src="caveSimulation.js"></script>
+        <script src="debug.js"></script>
+        <script src="MathHelpers.js"></script>
+        <script src="constants.js"></script>
+        <script src="block.js"></script>
+        <script src="fluidSimulation.js"></script>
+        <script src="sketch.js"></script>
+    </body>
+</html>
