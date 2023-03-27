@@ -6,6 +6,29 @@ canvas {
   display: block;
 }
 
+.image {
+  height: 100px;
+  width: 100px;
+  image-rendering: auto;
+}
+
+.crisp-edges {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.smooth {
+  image-rendering: smooth;
+}
+
+.high-quality {
+  image-rendering: high-quality;
+}
+
 .top-bar {
   height: 10vh;
   background-color: #a3a3a3;

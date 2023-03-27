@@ -152,6 +152,7 @@ function createLeaves(x, y, i) {
   }
 }
 function drawTerrain() {
+  noStroke();
   for (let i = 0; i < grid.length; i++) {
     let node = grid[i];
     let { x, y, blockType } = node;
