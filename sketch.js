@@ -466,8 +466,7 @@ function setPreviousPlayerPosition() {
 }
 
 function setNewPlayerPosition() {
-  fill(playerColor);
-  rect(player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  image(playerImage, player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
 }
 
 function mousePressed() {
