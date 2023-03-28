@@ -54,8 +54,6 @@ let woodColor = [91, 45, 0];
 let leafColor = [5, 131, 5, 127.5];
 let saplingColor = [191, 199, 49];
 
-let playerColor = [255, 0, 0];
-
 let grid = [];
 let masses = [];
 let newMasses = [];
@@ -69,6 +67,7 @@ let player = {
   x: findCenterNodeX(CENTER_WIDTH),
   y: 0,
   isFalling: false,
+  facing: 0,
   inventory: {
     grass: 0,
     dirt: 0,
@@ -398,13 +397,13 @@ function paintIron(node, index) {
 }
 
 function doPlayerMovement() {
-  drawPlayer();
   doPlayerMoveLeft();
   doPlayerMoveRight();
   doPlayerFall();
   if (!player.isFalling) {
     doPlayerJump();
   }
+  drawPlayer();
 }
 
 function doPlayerJump() {
@@ -417,8 +416,16 @@ function doPlayerJump() {
 }
 
 function drawPlayer() {
-  image(playerImage, player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  if (player.facing === 1) {
+    image(playerImage, player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  } else if (player.facing === 2) {
+    scale(-1, 1);
+    image(playerImage, (-player.x) - 24, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  } else {
+    image(playerImage, player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  }
 }
+
 function doPlayerFall() {
   if (player.y + BLOCK_SIZE > HEIGHT) {
     player.isFalling = false;
@@ -434,6 +441,9 @@ function doPlayerFall() {
 }
 
 function doPlayerMoveRight() {
+  if (keyIsDown(RIGHT_ARROW)) {
+    player.facing = 1;
+  }
   if (player.x + BLOCK_SIZE > WIDTH) {
     return;
   }
@@ -444,6 +454,9 @@ function doPlayerMoveRight() {
 }
 
 function doPlayerMoveLeft() {
+  if (keyIsDown(LEFT_ARROW)) {
+    player.facing = 2;
+  }
   if (player.x - BLOCK_SIZE < 0) {
     return;
   }
@@ -457,16 +470,19 @@ function updatePlayerPosition(newX, newY) {
   setPreviousPlayerPosition();
   player.x = newX;
   player.y = newY;
-  setNewPlayerPosition();
+  drawPlayer();
 }
 
 function setPreviousPlayerPosition() {
   fill(skyColor);
-  rect(player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
-}
-
-function setNewPlayerPosition() {
-  image(playerImage, player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  if (player.facing === 1) {
+    rect(player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  } else if (player.facing === 2) {
+    scale(-1, 1);
+    rect((-player.x) - 25, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  } else {
+    rect(player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  }
 }
 
 function mousePressed() {
