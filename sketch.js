@@ -86,6 +86,12 @@ let player = {
 let noCollisionBlocks = [sky, water];
 let nonSolidBlocks = [water, sky, player];
 
+let playerImage;
+
+function preload() {
+  playerImage = loadImage('playerImage.png');
+}
+
 function setup() {
   frameRate(15);
   setSeed();
@@ -411,8 +417,7 @@ function doPlayerJump() {
 }
 
 function drawPlayer() {
-  fill(playerColor);
-  rect(player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
+  image(playerImage, player.x, player.y, BLOCK_SIZE, BLOCK_SIZE);
 }
 function doPlayerFall() {
   if (player.y + BLOCK_SIZE > HEIGHT) {
