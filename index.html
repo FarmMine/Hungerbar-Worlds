@@ -1,24 +1,55 @@
-<!DOCTYPE html><html lang="en"><head>
-    <script src="p5.js"></script>
-    <script src="p5.sound.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
     <title>Hungerbar-Worlds</title>
-  </head>
-  <body>
-    <main>
-      <h1>Want to play Hungerbar-Worlds?</h1>
-      <p>You win if you manage to mine any of the following:</p>
-      <ul>
+</head>
+<body>
+<main>
+    <h1>Want to play Hungerbar-Worlds?</h1>
+    <p>You win if you manage to mine any of the following:</p>
+    <ul>
         <li>128 Grass</li>
         <li>64 Dirt</li>
         <li>32 Stone</li>
         <li>16 Iron</li>
         <li>8 Diamond</li>
-      </ul>
-      <p>Good luck!</p>
-      <form method="get">
+    </ul>
+    <p>Good luck!</p>
+    <form method="get">
         <input type="number" name="seed" placeholder="Enter a seed..." value="">
-        <input type="submit" value="Play Game" onclick='this.form.action=location.pathname + "playgame.html";'>
-    </main>
-</body></html>
+        <input type="submit" value="Play Game" id="startButton"
+               onclick='this.form.action=location.pathname + "playgame.html";'>
+    </form>
+</main>
+<script>
+  // Function to create and start the AudioContext
+  function initAudio() {
+    src="p5.js";
+    src="p5.sound.min.js";
+    // Check if AudioContext is supported in the browser
+    if (typeof window.AudioContext !== 'undefined' || typeof window.webkitAudioContext !== 'undefined') {
+      // Create AudioContext
+      var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      // Your sound loading and playback logic here...
+      // For example, load sounds and play them using the audioCtx.
+      // You can use audio elements or the Web Audio API depending on your needs.
+
+      // Example: Creating a simple oscillator sound
+      var oscillator = audioCtx.createOscillator();
+      oscillator.frequency.value = 440; // Set the frequency to 440 Hz (A4 note)
+      oscillator.connect(audioCtx.destination);
+      oscillator.start();
+    } else {
+      console.log('Web Audio API is not supported in this browser.');
+    }
+  }
+
+  // Listen for the click event on the button and initialize audio
+  var startButton = document.getElementById('startButton');
+  startButton.addEventListener('click', initAudio);
+</script>
+</body>
+</html>
